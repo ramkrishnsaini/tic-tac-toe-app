@@ -1,0 +1,12 @@
+<div class="game-board">
+    <h1>Tic-Tac-Toe</h1>
+    <div class="status winner" *ngIf="winner && winner.tile !== 'Tie'">{{ winner.tile }} wins!</div>
+    <div class="status tie" *ngIf="winner && winner.tile === 'Tie'">It's a tie!</div>
+    <div class="status" *ngIf="!winner">Next player: {{ currentPlayer?.tile }}</div>
+    <div class="board-row" *ngFor="let row of board; let i = index">
+        <div class="board-cell" *ngFor="let cell of row; let j = index" (click)="makeMove(i, j)">
+            {{ cell ? cell.tile : '' }}
+        </div>
+    </div>
+    <button class="reset-button" (click)="resetGame()">Reset Game</button>
+</div>
